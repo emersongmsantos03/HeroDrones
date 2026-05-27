@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://emersongmsantos03.github.io/HeroDrones/sitemap.xml

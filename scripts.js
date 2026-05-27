@@ -18,12 +18,15 @@
       ".quick-info-grid > *",
       ".section-heading",
       ".service-card",
+      ".trust-grid article",
       ".deliverables-layout > *",
       ".deliverables-list > *",
       ".portfolio-card",
       ".process-grid article",
       ".quote-copy",
       ".quote-form",
+      ".local-seo-layout > *",
+      ".local-search-grid > *",
       ".contact-panel",
       ".contact-layout > div",
       ".portfolio-page-content",
@@ -218,7 +221,7 @@
       return;
     }
 
-    document.querySelectorAll(".service-card, .portfolio-card, .showcase-card, .portfolio-category-card, .delivery-card").forEach(function (card) {
+    document.querySelectorAll(".service-card, .trust-grid article, .portfolio-card, .showcase-card, .portfolio-category-card, .delivery-card").forEach(function (card) {
       card.addEventListener("pointermove", function (event) {
         var rect = card.getBoundingClientRect();
         var x = ((event.clientX - rect.left) / rect.width) * 100;
