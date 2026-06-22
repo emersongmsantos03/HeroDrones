@@ -15,3 +15,10 @@ build/
 # Arquivos temporarios
 .verification/
 *.log
+
+# Arquivos brutos e capturas locais
+assets/Site.mp4
+portifolio/*.DNG
+portifolio/*.MP4
+portifolio/*.JPG
+light-*.png
