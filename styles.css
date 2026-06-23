@@ -1826,6 +1826,8 @@ a[href*="wa.me"].btn-outline .whatsapp-icon {
     #070a0e;
   background-size: 22px 22px;
   touch-action: none;
+  overscroll-behavior: contain;
+  -webkit-user-select: none;
   cursor: zoom-in;
 }
 
@@ -1835,6 +1837,8 @@ a[href*="wa.me"].btn-outline .whatsapp-icon {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  pointer-events: none;
+  -webkit-user-drag: none;
   user-select: none;
   transform: translate3d(var(--pan-x, 0px), var(--pan-y, 0px), 0) scale(var(--zoom, 1));
   transform-origin: center;
@@ -5103,5 +5107,86 @@ a[href*="wa.me"].btn-header:focus-visible .whatsapp-icon {
 
   .cta-actions .btn {
     width: 100%;
+  }
+}
+
+/* Mobile layout and gallery stability */
+html {
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@media (max-width: 640px) {
+  .portfolio-complete-heading,
+  .portfolio-complete-heading > div,
+  .portfolio-complete-stats,
+  .portfolio-complete-controls,
+  .portfolio-filter-bar {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .portfolio-complete-stats {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .portfolio-complete-stats span {
+    min-width: 0;
+    padding: 12px 6px 0 0;
+    overflow-wrap: anywhere;
+  }
+
+  .portfolio-complete-stats small {
+    font-size: 0.64rem;
+    line-height: 1.3;
+  }
+
+  .portfolio-complete-controls {
+    position: static;
+  }
+
+  .portfolio-lightbox-dialog {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  .portfolio-lightbox-toolbar {
+    max-width: calc(100% - 64px);
+    overflow: visible;
+  }
+
+  .portfolio-lightbox-toolbar [data-zoom-reset],
+  .portfolio-lightbox-toolbar [data-zoom-level],
+  .portfolio-lightbox-toolbar [data-lightbox-fullscreen] {
+    display: none;
+  }
+
+  .portfolio-lightbox-caption {
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  .floating-contact {
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 360px) {
+  .portfolio-complete-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-complete-body strong {
+    font-size: 0.86rem;
   }
 }

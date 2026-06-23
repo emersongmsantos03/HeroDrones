@@ -586,6 +586,19 @@
     var dragOriginX = 0;
     var dragOriginY = 0;
     var maxZoomLimit = 24;
+    var isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    var isTouchDragging = false;
+    var isPinching = false;
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchOriginX = 0;
+    var touchOriginY = 0;
+    var pinchStartDistance = 0;
+    var pinchStartZoom = 1;
+    var pinchStartPanX = 0;
+    var pinchStartPanY = 0;
+    var pinchStartAnchorX = 0;
+    var pinchStartAnchorY = 0;
     var currentTrigger = null;
     var currentTriggers = [];
     var currentIndex = -1;
@@ -612,7 +625,9 @@
     }
 
     function getMaximumZoom() {
-      return clamp(getActualSizeZoom() * 2.5, 4, maxZoomLimit);
+      var maximumZoom = clamp(getActualSizeZoom() * 2.5, 4, maxZoomLimit);
+
+      return isCoarsePointer ? Math.min(maximumZoom, 6) : maximumZoom;
     }
 
     function getDisplayZoomPercent() {
@@ -715,6 +730,41 @@
       };
     }
 
+    function getTouchDistance(firstTouch, secondTouch) {
+      return Math.hypot(
+        secondTouch.clientX - firstTouch.clientX,
+        secondTouch.clientY - firstTouch.clientY
+      );
+    }
+
+    function getTouchCenter(firstTouch, secondTouch) {
+      return {
+        x: (firstTouch.clientX + secondTouch.clientX) / 2,
+        y: (firstTouch.clientY + secondTouch.clientY) / 2
+      };
+    }
+
+    function startTouchDrag(touch) {
+      if (!touch || zoom <= 1.01) {
+        isTouchDragging = false;
+        return;
+      }
+
+      isTouchDragging = true;
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      touchOriginX = panX;
+      touchOriginY = panY;
+      stage.classList.add("is-dragging");
+    }
+
+    function stopTouchInteraction() {
+      isTouchDragging = false;
+      isPinching = false;
+      pinchStartDistance = 0;
+      stage.classList.remove("is-dragging");
+    }
+
     function setZoom(nextZoom, clientX, clientY) {
       var previousZoom = zoom;
       var targetZoom = clamp(nextZoom, 1, getMaximumZoom());
@@ -740,6 +790,7 @@
     }
 
     function resetImageView() {
+      stopTouchInteraction();
       zoom = 1;
       panX = 0;
       panY = 0;
@@ -916,7 +967,93 @@
         setZoom(zoom * (event.deltaY < 0 ? 1.12 : 0.88), event.clientX, event.clientY);
       }, { passive: false });
 
+      stage.addEventListener("touchstart", function (event) {
+        if (event.touches.length >= 2) {
+          var firstTouch = event.touches[0];
+          var secondTouch = event.touches[1];
+          var center = getTouchCenter(firstTouch, secondTouch);
+          var anchor = getStageAnchor(center.x, center.y);
+
+          event.preventDefault();
+          isPinching = true;
+          isTouchDragging = false;
+          didDrag = true;
+          pinchStartDistance = Math.max(getTouchDistance(firstTouch, secondTouch), 1);
+          pinchStartZoom = zoom;
+          pinchStartPanX = panX;
+          pinchStartPanY = panY;
+          pinchStartAnchorX = anchor.x;
+          pinchStartAnchorY = anchor.y;
+          stage.classList.add("is-dragging");
+          return;
+        }
+
+        if (event.touches.length === 1) {
+          startTouchDrag(event.touches[0]);
+        }
+      }, { passive: false });
+
+      stage.addEventListener("touchmove", function (event) {
+        if (isPinching && event.touches.length >= 2) {
+          var firstTouch = event.touches[0];
+          var secondTouch = event.touches[1];
+          var center = getTouchCenter(firstTouch, secondTouch);
+          var anchor = getStageAnchor(center.x, center.y);
+          var distance = getTouchDistance(firstTouch, secondTouch);
+          var targetZoom = clamp(
+            pinchStartZoom * (distance / pinchStartDistance),
+            1,
+            getMaximumZoom()
+          );
+
+          event.preventDefault();
+          zoom = targetZoom;
+
+          if (targetZoom <= 1.01) {
+            panX = 0;
+            panY = 0;
+          } else {
+            panX = anchor.x - ((pinchStartAnchorX - pinchStartPanX) / pinchStartZoom) * targetZoom;
+            panY = anchor.y - ((pinchStartAnchorY - pinchStartPanY) / pinchStartZoom) * targetZoom;
+          }
+
+          applyImageTransform();
+          return;
+        }
+
+        if (isTouchDragging && event.touches.length === 1) {
+          var touch = event.touches[0];
+
+          event.preventDefault();
+          panX = touchOriginX + touch.clientX - touchStartX;
+          panY = touchOriginY + touch.clientY - touchStartY;
+          didDrag = didDrag
+            || Math.abs(touch.clientX - touchStartX) > 4
+            || Math.abs(touch.clientY - touchStartY) > 4;
+          applyImageTransform();
+        }
+      }, { passive: false });
+
+      stage.addEventListener("touchend", function (event) {
+        if (isPinching && event.touches.length === 1) {
+          isPinching = false;
+          pinchStartDistance = 0;
+          startTouchDrag(event.touches[0]);
+          return;
+        }
+
+        if (!event.touches.length) {
+          stopTouchInteraction();
+        }
+      }, { passive: false });
+
+      stage.addEventListener("touchcancel", stopTouchInteraction, { passive: true });
+
       stage.addEventListener("pointerdown", function (event) {
+        if (event.pointerType === "touch") {
+          return;
+        }
+
         if (zoom <= 1.01 || (typeof event.button === "number" && event.button !== 0)) {
           return;
         }
@@ -933,6 +1070,10 @@
       });
 
       stage.addEventListener("pointermove", function (event) {
+        if (event.pointerType === "touch") {
+          return;
+        }
+
         if (!isDragging) {
           return;
         }
@@ -946,7 +1087,13 @@
 
       stage.addEventListener("dblclick", function (event) {
         event.preventDefault();
-        setZoom(zoom > 1.01 ? zoom * 1.5 : getActualSizeZoom() * 1.5, event.clientX, event.clientY);
+        setZoom(
+          isCoarsePointer
+            ? (zoom > 1.01 ? 1 : 2)
+            : (zoom > 1.01 ? zoom * 1.5 : getActualSizeZoom() * 1.5),
+          event.clientX,
+          event.clientY
+        );
       });
 
       stage.addEventListener("click", function (event) {
@@ -955,13 +1102,17 @@
           return;
         }
 
-        if (zoom <= 1.01) {
+        if (!isCoarsePointer && zoom <= 1.01) {
           setZoom(getActualSizeZoom(), event.clientX, event.clientY);
         }
       });
 
       ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (eventName) {
-        stage.addEventListener(eventName, function () {
+        stage.addEventListener(eventName, function (event) {
+          if (event.pointerType === "touch") {
+            return;
+          }
+
           isDragging = false;
           stage.classList.remove("is-dragging");
         });
