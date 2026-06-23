@@ -553,6 +553,141 @@
     });
   }
 
+  function setupGalleryTransition() {
+    var overlay = document.querySelector("[data-gallery-transition]");
+    var links = document.querySelectorAll("[data-gallery-transition-link]");
+    var progressValue = overlay && overlay.querySelector("[data-gallery-transition-value]");
+    var storageKey = "hero-gallery-transition";
+    var arrivalPending = document.documentElement.classList.contains("gallery-transition-pending");
+    var navigationTimer = 0;
+    var progressFrame = 0;
+
+    if (!overlay) {
+      return;
+    }
+
+    function setProgress(value) {
+      var normalizedValue = Math.round(clampTransitionValue(value));
+
+      overlay.style.setProperty("--gallery-progress", normalizedValue + "%");
+
+      if (progressValue) {
+        progressValue.textContent = String(normalizedValue);
+      }
+    }
+
+    function clampTransitionValue(value) {
+      return Math.min(Math.max(value, 0), 100);
+    }
+
+    function animateProgress(from, to, duration) {
+      var startTime = performance.now();
+
+      window.cancelAnimationFrame(progressFrame);
+
+      function update(currentTime) {
+        var elapsed = currentTime - startTime;
+        var progress = duration > 0 ? Math.min(elapsed / duration, 1) : 1;
+        var easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        setProgress(from + (to - from) * easedProgress);
+
+        if (progress < 1) {
+          progressFrame = window.requestAnimationFrame(update);
+        }
+      }
+
+      progressFrame = window.requestAnimationFrame(update);
+    }
+
+    function resetTransition() {
+      window.clearTimeout(navigationTimer);
+      window.cancelAnimationFrame(progressFrame);
+      overlay.hidden = true;
+      overlay.setAttribute("aria-hidden", "true");
+      overlay.classList.remove("is-active", "is-arriving", "is-complete");
+      document.body.classList.remove("gallery-transition-open");
+      document.documentElement.classList.remove("gallery-transition-pending");
+      setProgress(0);
+    }
+
+    function showArrival() {
+      var arrivalDuration = prefersReducedMotion ? 180 : 1050;
+
+      try {
+        sessionStorage.removeItem(storageKey);
+      } catch (error) {}
+
+      overlay.hidden = false;
+      overlay.setAttribute("aria-hidden", "false");
+      overlay.classList.add("is-active", "is-arriving");
+      document.body.classList.add("gallery-transition-open");
+      document.documentElement.classList.remove("gallery-transition-pending");
+      setProgress(100);
+
+      navigationTimer = window.setTimeout(function () {
+        overlay.classList.add("is-complete");
+      }, prefersReducedMotion ? 30 : 520);
+
+      window.setTimeout(resetTransition, arrivalDuration);
+    }
+
+    function openCompletePortfolio(link) {
+      var transitionDuration = prefersReducedMotion ? 220 : 1250;
+
+      try {
+        sessionStorage.setItem(storageKey, "pending");
+      } catch (error) {}
+
+      overlay.hidden = false;
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("gallery-transition-open");
+      setProgress(0);
+
+      window.requestAnimationFrame(function () {
+        overlay.classList.add("is-active");
+        animateProgress(0, 94, prefersReducedMotion ? 80 : 900);
+      });
+
+      navigationTimer = window.setTimeout(function () {
+        setProgress(100);
+        overlay.classList.add("is-complete");
+      }, prefersReducedMotion ? 100 : 980);
+
+      window.setTimeout(function () {
+        window.location.assign(link.href);
+      }, transitionDuration);
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        if (
+          event.defaultPrevented
+          || event.button !== 0
+          || event.metaKey
+          || event.ctrlKey
+          || event.shiftKey
+          || event.altKey
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+        openCompletePortfolio(link);
+      });
+    });
+
+    if (arrivalPending) {
+      showArrival();
+    }
+
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted && !arrivalPending) {
+        resetTransition();
+      }
+    });
+  }
+
   function setupPortfolioLightbox() {
     var lightbox = document.querySelector("[data-gallery-lightbox]");
 
@@ -1173,6 +1308,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("is-ready");
     setupCompletePortfolioGallery();
+    setupGalleryTransition();
     createIcons();
     setupAnchorNavigationState();
     setupPhoneMask();

@@ -16,6 +16,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/hero-drone-logo.svg">
   <link rel="preload" as="image" href="assets/hero-drone-logo.svg">
   <link rel="preload" as="image" href="assets/portfolio/telhado-detalhe.jpg">
+  <link rel="prefetch" href="portfolio-completo.html">
   <link rel="stylesheet" href="styles.css">
   <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script defer src="scripts.js"></script>
@@ -61,7 +62,7 @@
             <i data-lucide="images" aria-hidden="true"></i>
             Ver exemplos
           </a>
-          <a class="btn btn-call" href="portfolio-completo.html" target="_blank" rel="noreferrer">
+          <a class="btn btn-call" href="portfolio-completo.html" data-gallery-transition-link>
             <i data-lucide="scan-search" aria-hidden="true"></i>
             Abrir todas as imagens
           </a>
@@ -80,7 +81,7 @@
               Uma amostra objetiva de contexto, cobertura, fachada e detalhe. Abra qualquer imagem para conferir o arquivo original.
             </p>
           </div>
-          <a class="btn btn-outline" href="portfolio-completo.html" target="_blank" rel="noreferrer">
+          <a class="btn btn-outline" href="portfolio-completo.html" data-gallery-transition-link>
             <i data-lucide="gallery-horizontal-end" aria-hidden="true"></i>
             Ver galeria com 24 fotos
           </a>
@@ -180,6 +181,23 @@
     <a class="floating-phone" href="tel:+5541984537827" aria-label="Ligar para Hero Drone">
       <i data-lucide="phone" aria-hidden="true"></i>
     </a>
+  </div>
+
+  <div class="gallery-transition" data-gallery-transition hidden aria-hidden="true">
+    <div class="gallery-transition-grid" aria-hidden="true"></div>
+    <div class="gallery-transition-scan" aria-hidden="true"></div>
+    <div class="gallery-transition-content" role="status" aria-live="polite">
+      <div class="gallery-transition-radar" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <img src="assets/hero-drone-logo.svg" alt="" width="64" height="64">
+      </div>
+      <p>Preparando voo visual</p>
+      <strong>Abrindo o acervo completo</strong>
+      <span>Organizando 24 registros em alta resolução.</span>
+      <div class="gallery-transition-progress" aria-hidden="true"><i></i></div>
+      <small><b data-gallery-transition-value>0</b>% &middot; sincronizando imagens</small>
+    </div>
   </div>
 
   <div class="portfolio-lightbox" data-gallery-lightbox hidden aria-hidden="true">

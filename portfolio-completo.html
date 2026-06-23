@@ -11,6 +11,13 @@
   <meta property="og:url" content="https://emersongmsantos03.github.io/HeroDrones/portfolio-completo.html">
   <meta property="og:image" content="https://emersongmsantos03.github.io/HeroDrones/assets/portfolio/telhado-detalhe.jpg">
   <title>Galeria de inspe&ccedil;&atilde;o predial | Hero Drone</title>
+  <script>
+    try {
+      if (sessionStorage.getItem("hero-gallery-transition") === "pending") {
+        document.documentElement.classList.add("gallery-transition-pending");
+      }
+    } catch (error) {}
+  </script>
   <link rel="canonical" href="https://emersongmsantos03.github.io/HeroDrones/portfolio-completo.html">
   <link rel="icon" type="image/svg+xml" href="assets/hero-drone-logo.svg">
   <link rel="preload" as="image" href="assets/hero-drone-logo.svg">
@@ -130,6 +137,23 @@
       <p>Capta&ccedil;&atilde;o a&eacute;rea para inspe&ccedil;&atilde;o predial em Curitiba e Regi&atilde;o.</p>
     </div>
   </footer>
+
+  <div class="gallery-transition" data-gallery-transition hidden aria-hidden="true">
+    <div class="gallery-transition-grid" aria-hidden="true"></div>
+    <div class="gallery-transition-scan" aria-hidden="true"></div>
+    <div class="gallery-transition-content" role="status" aria-live="polite">
+      <div class="gallery-transition-radar" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <img src="assets/hero-drone-logo.svg" alt="" width="64" height="64">
+      </div>
+      <p>Voo visual conclu&iacute;do</p>
+      <strong>Acervo pronto para explorar</strong>
+      <span>Contexto, aproxima&ccedil;&atilde;o e detalhe em 24 registros.</span>
+      <div class="gallery-transition-progress" aria-hidden="true"><i></i></div>
+      <small><b data-gallery-transition-value>100</b>% &middot; imagens sincronizadas</small>
+    </div>
+  </div>
 
   <div class="portfolio-lightbox" data-gallery-lightbox hidden aria-hidden="true">
     <div class="portfolio-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="portfolio-lightbox-title">
