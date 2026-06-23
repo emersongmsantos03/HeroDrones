@@ -4033,7 +4033,7 @@ a[href*="wa.me"].btn-header:focus-visible .whatsapp-icon {
 .portfolio-complete-heading h2 {
   font-size: clamp(2rem, 4vw, 3.25rem);
   line-height: 1.03;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 .section-copy {
@@ -5047,6 +5047,43 @@ a[href*="wa.me"].btn-header:focus-visible .whatsapp-icon {
   }
 }
 
+@media (max-width: 640px) {
+  .section-heading,
+  .section-heading.portfolio-heading,
+  .portfolio-heading > div {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .section-heading h2,
+  .deliverables-layout h2,
+  .contact-layout h2,
+  .quote-copy h2,
+  .local-seo-layout h2,
+  .feature-layout h2,
+  .portfolio-case-layout h2,
+  .portfolio-roof-copy h2,
+  .portfolio-cta-section h2,
+  .portfolio-complete-heading h2 {
+    max-width: 100%;
+    font-size: 1.9rem;
+    line-height: 1.08;
+    letter-spacing: 0;
+    overflow-wrap: break-word;
+  }
+
+  .section-heading .section-copy {
+    width: 100%;
+    max-width: calc(100vw - 32px);
+    overflow-wrap: anywhere;
+  }
+
+  .portfolio-heading .section-copy {
+    max-width: 34ch;
+  }
+}
+
 /* Centered action buttons */
 .header-actions {
   display: grid;
@@ -5178,6 +5215,10 @@ body {
 
   .floating-contact {
     bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .header-actions .btn-header {
+    display: none;
   }
 }
 

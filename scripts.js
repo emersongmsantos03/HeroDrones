@@ -438,6 +438,16 @@
     }
 
     var portfolioItems = [
+      { file: "Usar1.jpg", category: "contexto", label: "Fachadas e patologias", title: "Fachada com manchas e fissuras" },
+      { file: "Usar3.jpg", category: "detalhes", label: "Detalhes técnicos", title: "Leitura frontal da fachada" },
+      { file: "Usar8.jpg", category: "coberturas", label: "Coberturas", title: "Platibanda e cobertura" },
+      { file: "Terreno12.jpg", category: "contexto", label: "Terreno e entorno", title: "Terreno em vista zenital" },
+      { file: "Usar.jpg", category: "detalhes", label: "Detalhes técnicos", title: "Fissuras com contexto lateral" },
+      { file: "Usar9.jpg", category: "contexto", label: "Contexto urbano", title: "Cobertura com contexto urbano" },
+      { file: "Usar4.jpg", category: "contexto", label: "Contexto e fachadas", title: "Canto de fachada e fissuras" },
+      { file: "Usar5.jpg", category: "detalhes", label: "Detalhes técnicos", title: "Fissuras e coberturas vizinhas" },
+      { file: "Usar2.jpg", category: "contexto", label: "Contexto e fachadas", title: "Fachada e skyline urbano" },
+      { file: "terreno1.jpg", category: "contexto", label: "Terreno e entorno", title: "Terreno e limites laterais" },
       { file: "DJI_0340.JPG", category: "contexto", label: "Contexto e fachadas", title: "Implantação e entorno" },
       { file: "DJI_0372.JPG", category: "contexto", label: "Contexto e fachadas", title: "Edificação e cobertura" },
       { file: "DJI_0375.JPG", category: "contexto", label: "Contexto e fachadas", title: "Plano geral de fachada" },
@@ -521,6 +531,20 @@
     if (!filterBar) {
       return;
     }
+
+    filterBar.querySelectorAll("[data-complete-filter]").forEach(function (button) {
+      var filter = button.getAttribute("data-complete-filter");
+      var count = filter === "all"
+        ? items.length
+        : items.filter(function (item) {
+          return item.getAttribute("data-complete-category") === filter;
+        }).length;
+      var badge = button.querySelector("span");
+
+      if (badge) {
+        badge.textContent = String(count);
+      }
+    });
 
     filterBar.addEventListener("click", function (event) {
       var selectedButton = event.target.closest("[data-complete-filter]");

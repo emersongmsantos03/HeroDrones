@@ -9,7 +9,7 @@ URL publicada: https://emersongmsantos03.github.io/HeroDrones/
 - `index.html`: apresentacao do servico de inspecao predial com drone.
 - `servicos.html`: captacao de coberturas, fachadas e areas tecnicas.
 - `portfolio.html`: selecao principal com seis registros em destaque.
-- `portfolio-completo.html`: galeria selecionada com 24 fotos originais.
+- `portfolio-completo.html`: galeria selecionada com 34 fotos originais.
 - `sobre.html`: historia da Hero Drone e apresentacao do Emerson.
 - `contato.html`: contato direto por WhatsApp.
 - `styles.css`: estilos responsivos e identidade visual.
