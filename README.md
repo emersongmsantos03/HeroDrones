@@ -1,13 +1,13 @@
 # Hero Drone
 
-Site institucional da Hero Drone para captacao aerea em apoio a inspecao predial em Curitiba e Regiao.
+Site institucional da Hero Drone para fotos e videos aereos de Airbnb, chacaras, cabanas, imoveis, empresas, obras e servicos sob medida em Curitiba e Regiao.
 
 URL publicada: https://emersongmsantos03.github.io/HeroDrones/
 
 ## Estrutura
 
-- `index.html`: apresentacao do servico de inspecao predial com drone.
-- `servicos.html`: captacao de coberturas, fachadas e areas tecnicas.
+- `index.html`: apresentacao comercial da Hero Drone e seus principais publicos.
+- `servicos.html`: solucoes para hospedagens, propriedades, negocios e projetos gerais.
 - `portfolio.html`: selecao principal com seis registros em destaque.
 - `portfolio-completo.html`: galeria selecionada com 34 fotos originais.
 - `sobre.html`: historia da Hero Drone e apresentacao do Emerson.

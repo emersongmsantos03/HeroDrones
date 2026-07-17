@@ -2960,6 +2960,207 @@ a[href*="wa.me"].btn-outline .whatsapp-icon {
   }
 }
 
+/* Hero Drone 2026 — posicionamento para propriedades e conteúdo comercial */
+.brand-mark-new,
+.brand-mark:has(img[src$="hero-drone-logo.png"]) {
+  background: #090a0c;
+  border-color: rgba(216, 165, 0, 0.36);
+  box-shadow: 0 8px 24px rgba(216, 165, 0, 0.14);
+  overflow: hidden;
+}
+
+.brand-mark-new img,
+.brand-mark:has(img[src$="hero-drone-logo.png"]) img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.hero-business::after {
+  background: linear-gradient(90deg, rgba(5, 7, 10, 0.96) 0%, rgba(5, 7, 10, 0.82) 43%, rgba(5, 7, 10, 0.16) 82%);
+}
+
+.hero-business .hero-content {
+  color: #fff;
+  max-width: 760px;
+}
+
+.hero-business .hero-content h1 {
+  color: #fff;
+  max-width: 720px;
+}
+
+.hero-business .hero-lead {
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 650px;
+}
+
+.hero-business .eyebrow {
+  color: #edc83b;
+}
+
+.hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-trust-row span {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.82);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  gap: 7px;
+  padding: 8px 12px;
+}
+
+.hero-trust-row svg,
+.audience-grid > a > svg:first-child {
+  height: 18px;
+  width: 18px;
+}
+
+.section-copy-wide {
+  max-width: 720px;
+}
+
+.audience-grid > a {
+  min-height: 220px;
+}
+
+.audience-grid > a > svg:first-child {
+  background: rgba(216, 165, 0, 0.12);
+  border-radius: 12px;
+  color: #a77c00;
+  height: 44px;
+  padding: 11px;
+  width: 44px;
+}
+
+.hero-showcase-section {
+  background: #0c0e12;
+  color: #fff;
+}
+
+.hero-showcase-grid {
+  align-items: center;
+  display: grid;
+  gap: clamp(36px, 7vw, 88px);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+.hero-showcase-copy h2 {
+  color: #fff;
+}
+
+.hero-showcase-copy .section-copy {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.hero-showcase-copy .text-link {
+  color: #edc83b;
+}
+
+.hero-check-list {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 26px 0;
+  padding: 0;
+}
+
+.hero-check-list li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.82);
+  display: flex;
+  gap: 10px;
+}
+
+.hero-check-list svg {
+  color: #edc83b;
+  height: 18px;
+  width: 18px;
+}
+
+.hero-showcase-gallery {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero-showcase-gallery img {
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.hero-showcase-gallery .showcase-main {
+  aspect-ratio: 16 / 10;
+  grid-column: 1 / -1;
+}
+
+.deliverable-cards .service-card {
+  min-height: 240px;
+}
+
+.deliverable-cards .service-card > svg {
+  background: #11141a;
+  color: #edc83b;
+}
+
+@media (max-width: 820px) {
+  .hero-business::after {
+    background: linear-gradient(180deg, rgba(5, 7, 10, 0.46), rgba(5, 7, 10, 0.94) 72%);
+  }
+
+  .hero-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-business .hero-content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-business {
+    min-height: calc(100svh - 72px);
+  }
+
+  .hero-business .hero-bg {
+    object-position: 58% center;
+  }
+
+  .hero-business .hero-content h1 {
+    font-size: clamp(2.4rem, 13vw, 3.5rem);
+    line-height: 0.98;
+  }
+
+  .hero-trust-row {
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .hero-trust-row span {
+    font-size: 0.68rem;
+  }
+
+  .hero-showcase-gallery {
+    gap: 8px;
+  }
+}
+
 @media (max-width: 1180px) {
   .trust-grid,
   .service-grid,
