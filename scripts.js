@@ -437,41 +437,18 @@
       return;
     }
 
+    /* Curadoria temporária: substitua somente esta lista quando o novo acervo chegar. */
     var portfolioItems = [
-      { file: "Usar1.jpg", category: "contexto", label: "Fachadas e patologias", title: "Fachada com manchas e fissuras" },
-      { file: "Usar3.jpg", category: "detalhes", label: "Detalhes técnicos", title: "Leitura frontal da fachada" },
-      { file: "Usar8.jpg", category: "coberturas", label: "Coberturas", title: "Platibanda e cobertura" },
-      { file: "Terreno12.jpg", category: "contexto", label: "Terreno e entorno", title: "Terreno em vista zenital" },
-      { file: "Usar.jpg", category: "detalhes", label: "Detalhes técnicos", title: "Fissuras com contexto lateral" },
-      { file: "Usar9.jpg", category: "contexto", label: "Contexto urbano", title: "Cobertura com contexto urbano" },
-      { file: "Usar4.jpg", category: "contexto", label: "Contexto e fachadas", title: "Canto de fachada e fissuras" },
-      { file: "Usar5.jpg", category: "detalhes", label: "Detalhes técnicos", title: "Fissuras e coberturas vizinhas" },
-      { file: "Usar2.jpg", category: "contexto", label: "Contexto e fachadas", title: "Fachada e skyline urbano" },
-      { file: "terreno1.jpg", category: "contexto", label: "Terreno e entorno", title: "Terreno e limites laterais" },
-      { file: "DJI_0340.JPG", category: "contexto", label: "Contexto e fachadas", title: "Implantação e entorno" },
-      { file: "DJI_0372.JPG", category: "contexto", label: "Contexto e fachadas", title: "Edificação e cobertura" },
-      { file: "DJI_0375.JPG", category: "contexto", label: "Contexto e fachadas", title: "Plano geral de fachada" },
-      { file: "DJI_0384.JPG", category: "contexto", label: "Contexto e fachadas", title: "Lateral e afastamento" },
-      { file: "DJI_0390.JPG", category: "contexto", label: "Contexto e fachadas", title: "Área entre edificações" },
-      { file: "DJI_0398.JPG", category: "contexto", label: "Contexto e fachadas", title: "Encontro entre fachadas" },
-      { file: "DJI_0401.JPG", category: "contexto", label: "Contexto e fachadas", title: "Fachada e cobertura vizinha" },
-      { file: "DJI_0404.JPG", category: "contexto", label: "Contexto e fachadas", title: "Vista ampla da fachada" },
-      { file: "DJI_0412.JPG", category: "coberturas", label: "Coberturas", title: "Cobertura em vista zenital" },
-      { file: "DJI_0421.JPG", category: "coberturas", label: "Coberturas", title: "Geometria da cobertura" },
-      { file: "DJI_0430.JPG", category: "coberturas", label: "Coberturas", title: "Platibanda e arremate" },
-      { file: "DJI_0451.JPG", category: "coberturas", label: "Coberturas", title: "Borda e proteção superior" },
-      { file: "DJI_0463.JPG", category: "coberturas", label: "Coberturas", title: "Cobertura metálica e fachada" },
-      { file: "DJI_0475.JPG", category: "coberturas", label: "Coberturas", title: "Superfície metálica" },
-      { file: "DJI_0480.JPG", category: "coberturas", label: "Coberturas", title: "Caimento e perímetro" },
-      { file: "DJI_0491.JPG", category: "coberturas", label: "Coberturas", title: "Vista frontal da cobertura" },
-      { file: "DJI_0499.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Chapas e borda lateral" },
-      { file: "DJI_0508.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Emendas e arremates" },
-      { file: "DJI_0510.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Ponto de ventilação" },
-      { file: "DJI_0513.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Equipamentos sobre a cobertura" },
-      { file: "DJI_0520.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Encontro entre panos" },
-      { file: "DJI_0523.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Extensão e recortes" },
-      { file: "DJI_0525.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Cobertura e contexto urbano" },
-      { file: "DJI_0536.JPG", category: "detalhes", label: "Detalhes técnicos", title: "Vista geral de encerramento" }
+      { file: "Terreno12.jpg", category: "propriedades", label: "Propriedades", title: "Geometria do terreno" },
+      { file: "Usar2.jpg", category: "arquitetura", label: "Arquitetura", title: "Edificação e paisagem urbana" },
+      { file: "Usar9.jpg", category: "arquitetura", label: "Arquitetura", title: "Cobertura e contexto" },
+      { file: "terreno1.jpg", category: "propriedades", label: "Propriedades", title: "Território e limites naturais" },
+      { file: "Usar.jpg", category: "detalhes", label: "Detalhes visuais", title: "Texturas da fachada" },
+      { file: "Usar4.jpg", category: "arquitetura", label: "Arquitetura", title: "Linhas e volumes" },
+      { file: "Usar8.jpg", category: "detalhes", label: "Detalhes visuais", title: "Platibanda vista do alto" },
+      { file: "Usar5.jpg", category: "detalhes", label: "Detalhes visuais", title: "Encontros arquitetônicos" },
+      { file: "Usar1.jpg", category: "arquitetura", label: "Arquitetura", title: "Fachada em perspectiva" },
+      { file: "Usar3.jpg", category: "detalhes", label: "Detalhes visuais", title: "Leitura frontal" }
     ];
     var fragments = document.createDocumentFragment();
     var items = [];
@@ -494,7 +471,7 @@
       button.setAttribute("data-gallery-group", "portfolio-completo");
       button.setAttribute("data-full", source);
       button.setAttribute("data-title", portfolioItem.title);
-      button.setAttribute("data-meta", portfolioItem.label + " | " + portfolioItem.file + " | Arquivo original");
+      button.setAttribute("data-meta", portfolioItem.label + " · Alta resolução");
       button.setAttribute("aria-label", "Abrir " + portfolioItem.title + " em resolução original");
 
       media.className = "portfolio-complete-media";
