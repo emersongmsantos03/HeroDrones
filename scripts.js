@@ -1345,3 +1345,59 @@
 
   window.addEventListener("scroll", updateHeaderState, { passive: true });
 })();
+
+(function () {
+  function setupCinemaHome() {
+    var menu = document.querySelector(".cinema-menu");
+    var nav = document.querySelector("#cinema-nav");
+    var dialog = document.querySelector(".video-dialog");
+
+    if (!document.body.classList.contains("cinema-home")) return;
+
+    if (menu && nav) {
+      menu.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        menu.setAttribute("aria-expanded", String(open));
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          menu.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    document.querySelectorAll("[data-video-id] .video-cover").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var id = button.closest("[data-video-id]").getAttribute("data-video-id");
+        var frame = document.createElement("iframe");
+        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+        frame.title = button.getAttribute("aria-label");
+        frame.allow = "autoplay; encrypted-media; picture-in-picture";
+        frame.allowFullscreen = true;
+        dialog.querySelector("div").replaceChildren(frame);
+        dialog.showModal();
+      });
+    });
+
+    if (dialog) {
+      function closeVideo() {
+        dialog.close();
+        dialog.querySelector("div").replaceChildren();
+      }
+      dialog.querySelector("button").addEventListener("click", closeVideo);
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) closeVideo();
+      });
+      dialog.addEventListener("cancel", function () {
+        dialog.querySelector("div").replaceChildren();
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCinemaHome);
+  } else {
+    setupCinemaHome();
+  }
+})();
