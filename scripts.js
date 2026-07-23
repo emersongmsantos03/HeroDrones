@@ -1384,6 +1384,22 @@
       });
     });
 
+    document.querySelectorAll("[data-open-video]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var id = button.getAttribute("data-open-video");
+        var frame = document.createElement("iframe");
+        var isVertical = button.hasAttribute("data-vertical");
+        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+        frame.title = button.getAttribute("data-video-title") || "Filme Hero Drone";
+        frame.allow = "autoplay; encrypted-media; picture-in-picture";
+        frame.allowFullscreen = true;
+        dialog.classList.toggle("is-vertical", isVertical);
+        dialog.querySelector(".player-label").textContent = "Hero Drone — " + frame.title;
+        dialog.querySelector("[data-player]").replaceChildren(frame);
+        dialog.showModal();
+      });
+    });
+
     if (dialog) {
       function closeVideo() {
         dialog.close();
