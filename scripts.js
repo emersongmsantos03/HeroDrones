@@ -1375,7 +1375,11 @@
         frame.title = button.getAttribute("aria-label");
         frame.allow = "autoplay; encrypted-media; picture-in-picture";
         frame.allowFullscreen = true;
-        dialog.querySelector("div").replaceChildren(frame);
+        var card = button.closest("[data-video-id]");
+        var title = card.querySelector("h3");
+        dialog.classList.toggle("is-vertical", card.classList.contains("video-card-vertical"));
+        dialog.querySelector(".player-label").textContent = "Hero Drone — " + (title ? title.textContent : "Filme");
+        dialog.querySelector("[data-player]").replaceChildren(frame);
         dialog.showModal();
       });
     });
@@ -1383,14 +1387,16 @@
     if (dialog) {
       function closeVideo() {
         dialog.close();
-        dialog.querySelector("div").replaceChildren();
+        dialog.querySelector("[data-player]").replaceChildren();
+        dialog.classList.remove("is-vertical");
       }
       dialog.querySelector("button").addEventListener("click", closeVideo);
       dialog.addEventListener("click", function (event) {
         if (event.target === dialog) closeVideo();
       });
       dialog.addEventListener("cancel", function () {
-        dialog.querySelector("div").replaceChildren();
+        dialog.querySelector("[data-player]").replaceChildren();
+        dialog.classList.remove("is-vertical");
       });
     }
 
