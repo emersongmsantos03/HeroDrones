@@ -1393,6 +1393,31 @@
         dialog.querySelector("div").replaceChildren();
       });
     }
+
+    var quoteForm = document.querySelector("[data-cinema-form]");
+    if (quoteForm) {
+      quoteForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!quoteForm.checkValidity()) {
+          quoteForm.reportValidity();
+          return;
+        }
+        var data = new FormData(quoteForm);
+        var message = [
+          "Olá! Conheci o trabalho da Hero Drone pelo site e gostaria de solicitar um orçamento.",
+          "",
+          "Nome: " + data.get("nome"),
+          "WhatsApp: " + data.get("whatsapp"),
+          "E-mail: " + (data.get("email") || "Não informado"),
+          "Cidade: " + data.get("cidade"),
+          "Tipo de projeto: " + data.get("tipo"),
+          "Serviço desejado: " + data.get("servico"),
+          "Objetivo: " + data.get("objetivo"),
+          "Mensagem adicional: " + (data.get("mensagem") || "Não informada")
+        ].join("\n");
+        window.open("https://wa.me/5541984537827?text=" + encodeURIComponent(message), "_blank", "noopener");
+      });
+    }
   }
 
   if (document.readyState === "loading") {
