@@ -198,3 +198,19 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 .studio-opening-video figcaption>button:hover{border-color:#f2c54f!important;color:#f2c54f!important}
 @media(max-width:700px){.studio-opening-video figcaption{right:18px!important;left:18px!important;bottom:18px!important;display:grid!important;grid-template-columns:1fr auto!important;gap:5px 14px!important}.studio-opening-video figcaption>span{grid-column:1/-1!important;padding:0!important;border:0!important}.studio-opening-video figcaption>button{grid-column:2!important;grid-row:2!important}}
 @media(prefers-reduced-motion:reduce){.studio-opening-video>video{display:none!important}}
+
+/* Editorial portfolio viewer */
+.portfolio-lightbox{padding:clamp(14px,3vw,42px)!important;background:rgba(3,5,4,.94)!important;backdrop-filter:blur(18px)!important}
+.portfolio-lightbox-dialog{width:min(1480px,92vw)!important;height:min(88svh,920px)!important;grid-template-rows:minmax(0,1fr) 74px!important;border:0!important;border-radius:3px!important;background:#090b0a!important;box-shadow:0 28px 90px rgba(0,0,0,.5)!important}
+.portfolio-lightbox-stage{margin:0!important;background:#090b0a!important;cursor:zoom-in!important}
+.portfolio-lightbox-stage img{max-width:calc(100% - 80px)!important;max-height:calc(100% - 56px)!important}
+.portfolio-lightbox-toolbar{display:none!important}
+.portfolio-lightbox-close{top:16px!important;right:16px!important;width:38px!important;height:38px!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:50%!important;background:rgba(7,9,8,.68)!important;font-size:0!important;backdrop-filter:blur(12px)!important}
+.portfolio-lightbox-close:after{content:"×"!important;font:400 1.25rem "Manrope",sans-serif!important}
+.portfolio-lightbox-nav{width:40px!important;height:40px!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:50%!important;background:rgba(7,9,8,.62)!important;font-size:1.35rem!important;backdrop-filter:blur(12px)!important}
+.portfolio-lightbox-prev{left:18px!important}.portfolio-lightbox-next{right:18px!important}
+.portfolio-lightbox-caption{padding:15px 4px 0!important;align-items:start!important;border-top:1px solid rgba(255,255,255,.14)!important;background:#090b0a!important}
+.portfolio-lightbox-caption span{color:#f2c54f!important;font-size:.58rem!important;letter-spacing:.1em!important}
+.portfolio-lightbox-caption h2{margin:4px 0 0!important;color:#fff!important;font-size:clamp(1rem,1.5vw,1.3rem)!important;font-weight:550!important;letter-spacing:-.035em!important}
+.portfolio-lightbox-caption>strong{padding-top:7px!important;color:rgba(255,255,255,.48)!important;font-size:.68rem!important}
+@media(max-width:700px){.portfolio-lightbox{padding:0!important}.portfolio-lightbox-dialog{width:100%!important;height:100svh!important;grid-template-rows:minmax(0,1fr) 86px!important;border-radius:0!important}.portfolio-lightbox-stage img{max-width:100%!important;max-height:100%!important}.portfolio-lightbox-caption{padding:14px 18px max(14px,env(safe-area-inset-bottom))!important}.portfolio-lightbox-nav{top:auto!important;bottom:104px!important}.portfolio-lightbox-close{top:14px!important;right:14px!important}}
