@@ -262,3 +262,12 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 @keyframes google-mark-breathe{0%,100%{box-shadow:0 0 0 0 rgba(242,197,79,0)}50%{box-shadow:0 0 0 7px rgba(242,197,79,.1)}}
 @media(max-width:700px),(hover:none){.studio-review-grid article:hover{transform:none!important;box-shadow:none!important}.studio-review-grid article:before{display:none!important}.studio-review-grid article:hover .review-avatar,.studio-review-grid article:hover .review-stars{transform:none!important}}
 @media(prefers-reduced-motion:reduce){.studio-review-grid article,.review-avatar,.review-stars,.studio-review-grid article>a{transition:none!important}.google-mark{animation:none!important}}
+
+/* Instagram touchpoints */
+.cinema-footer{grid-template-columns:1fr auto auto auto!important}
+.footer-instagram{position:relative;padding-bottom:5px;color:#fff!important;font-size:.66rem!important;font-weight:750!important;letter-spacing:.06em!important;text-decoration:none!important;text-transform:uppercase!important}
+.footer-instagram:after{content:""!important;position:absolute!important;left:0!important;right:100%!important;bottom:0!important;height:1px!important;background:#f2c54f!important;transition:right .25s ease!important}.footer-instagram:hover:after{right:0!important}
+.studio-footer nav a:last-child{color:#f2c54f!important}
+.contact-instagram{margin-top:30px;padding:17px 0;display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center;border-top:1px solid rgba(11,12,11,.16);border-bottom:1px solid rgba(11,12,11,.16);color:#0b0c0b;text-decoration:none;transition:border-color .25s ease}
+.contact-instagram span{color:#777d79;font-size:.62rem;font-weight:750;text-transform:uppercase}.contact-instagram strong{font-size:.83rem}.contact-instagram b{color:#b48a4d;transition:transform .25s ease}.contact-instagram:hover{border-color:#f2c54f}.contact-instagram:hover b{transform:translate(3px,-3px)}
+@media(max-width:900px){.cinema-footer{grid-template-columns:1fr!important}.footer-instagram{justify-self:start!important}}
