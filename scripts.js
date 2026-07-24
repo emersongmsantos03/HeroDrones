@@ -1488,6 +1488,16 @@
         revealTargets.forEach(function (target) { target.classList.add("is-in"); });
       }
 
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(hover: hover)").matches) {
+        document.querySelectorAll(".studio-review-grid article").forEach(function (card) {
+          card.addEventListener("pointermove", function (event) {
+            var rect = card.getBoundingClientRect();
+            card.style.setProperty("--review-x", ((event.clientX - rect.left) / rect.width * 100).toFixed(1) + "%");
+            card.style.setProperty("--review-y", ((event.clientY - rect.top) / rect.height * 100).toFixed(1) + "%");
+          });
+        });
+      }
+
       function updateStudioHeader() {
         document.body.classList.toggle("studio-scrolled", window.scrollY > 72);
       }
