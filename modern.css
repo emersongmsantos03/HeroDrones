@@ -226,7 +226,7 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 .studio-review-grid article{min-height:430px;padding:clamp(28px,4vw,58px);display:flex;flex-direction:column;background:#111513}
 .review-top{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center}
 .review-top>div{display:flex;flex-direction:column}.review-top strong{font-size:.82rem}.review-top small{color:rgba(255,255,255,.48);font-size:.62rem}
-.review-avatar{position:relative;width:50px;height:50px;display:block;border-radius:50%;overflow:hidden;background:#252a27}.review-avatar img{position:absolute;top:0;width:200%;height:100%;max-width:none!important;object-fit:cover}.review-avatar-dlara img{left:0}.review-avatar-marcos img{left:-100%}
+.review-avatar{position:relative;width:50px;height:50px;display:block;border-radius:50%;overflow:hidden;background:#252a27}.review-avatar img{position:absolute;top:0;width:200%;height:100%;max-width:none!important;object-fit:cover}.review-avatar-dlara img{left:0}.review-avatar-marcos img{inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
 .review-stars{color:#f2c54f;font-size:.85rem;letter-spacing:.08em}
 .studio-review-grid blockquote{max-width:980px;margin:70px 0 55px;color:rgba(255,255,255,.88);font-size:clamp(1.35rem,2vw,2.2rem);font-weight:480;letter-spacing:-.035em;line-height:1.42}
 .studio-review-grid article:not(.studio-review-featured) blockquote{font-size:clamp(1.7rem,2.4vw,2.8rem);line-height:1.25}
