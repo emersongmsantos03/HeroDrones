@@ -124,3 +124,64 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 .about-hero>img{object-position:center 44%!important;filter:saturate(.92) contrast(1.04)!important;transform:scale(1.012)!important}
 .about-hero:after{background:linear-gradient(90deg,rgba(4,10,9,.88) 0%,rgba(4,10,9,.54) 47%,rgba(4,10,9,.12) 76%),linear-gradient(0deg,rgba(4,10,9,.72),transparent 58%)!important}
 @media(max-width:700px){.about-hero>img{object-position:58% center!important}.about-hero:after{background:linear-gradient(0deg,rgba(4,10,9,.9) 0%,rgba(4,10,9,.25) 72%)!important}}
+
+/* 2026 art-direction refinement */
+.cinema-inner .inner-hero{min-height:min(760px,84svh)!important}
+.cinema-inner .inner-hero>div{width:min(1320px,88vw)!important;padding:178px 0 82px!important}
+.cinema-inner .inner-hero h1{max-width:930px!important;margin-bottom:26px!important;font-size:clamp(3.7rem,6.15vw,6.35rem)!important;line-height:.91!important;letter-spacing:-.07em!important}
+.cinema-inner .inner-hero>div>p:last-child{max-width:600px!important;font-size:1rem!important}
+.portfolio-clean-hero>img{object-position:center 48%!important;filter:saturate(.9) contrast(1.05)!important}
+.services-clean-hero>img{object-position:center 42%!important;filter:saturate(.86) contrast(1.06)!important}
+.portfolio-clean-hero:after,.services-clean-hero:after,.contact-hero:after{background:linear-gradient(90deg,rgba(4,10,9,.88),rgba(4,10,9,.5) 47%,rgba(4,10,9,.09) 78%),linear-gradient(0deg,rgba(4,10,9,.72),transparent 60%)!important}
+.contact-hero>img{object-position:center 46%!important;filter:saturate(.86) contrast(1.06)!important}
+.cinema-header{transition:height .3s ease,background .3s ease,border-color .3s ease,backdrop-filter .3s ease!important}
+.cinema-inner.is-scrolled .cinema-header{position:fixed!important;height:74px!important;background:rgba(7,10,9,.88)!important;border-color:rgba(242,197,79,.2)!important;backdrop-filter:blur(18px)!important}
+.cinema-inner.is-scrolled .cinema-brand img{width:42px!important;height:42px!important}
+.cinema-inner .cinema-brand img{transition:width .3s ease,height .3s ease!important}
+
+.project-stories{background:#0b100f!important;color:#fff!important}
+.project-stories .cinema-heading{margin-bottom:100px!important}
+.project-stories .cinema-heading>p{color:rgba(255,255,255,.58)!important}
+.project-story{display:grid!important;grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr)!important;gap:clamp(60px,8vw,130px)!important;align-items:center!important;padding:0 0 130px!important}
+.project-story+.project-story{padding-top:130px!important;border-top:1px solid rgba(255,255,255,.14)!important}
+.project-story:last-child{padding-bottom:0!important}
+.project-story-reverse figure{order:2!important}
+.project-story figure{position:relative!important;margin:0!important;overflow:hidden!important}
+.project-story figure:after{content:""!important;position:absolute!important;inset:0!important;border:1px solid rgba(255,255,255,.1)!important;pointer-events:none!important}
+.project-story figure img{width:100%!important;aspect-ratio:16/11!important;display:block!important;object-fit:cover!important;transition:transform .8s cubic-bezier(.2,.7,.2,1)!important}
+.project-story:hover figure img{transform:scale(1.025)!important}
+.project-story figure span{position:absolute!important;z-index:2!important;left:16px!important;bottom:16px!important;padding:8px 11px!important;background:#f5f2e9!important;color:#101412!important;font-size:.58rem!important;font-weight:800!important;letter-spacing:.1em!important;text-transform:uppercase!important}
+.project-story h3{max-width:560px!important;margin:0 0 38px!important;color:#fff!important;font-size:clamp(2.5rem,4vw,4.7rem)!important;line-height:.96!important}
+.project-story dl{margin:0 0 36px!important}
+.project-story dl>div{display:grid!important;grid-template-columns:86px 1fr!important;gap:18px!important;padding:17px 0!important;border-top:1px solid rgba(255,255,255,.15)!important}
+.project-story dt{color:#f2c54f!important;font-size:.61rem!important;font-weight:800!important;letter-spacing:.1em!important;text-transform:uppercase!important}
+.project-story dd{margin:0!important;color:rgba(255,255,255,.64)!important;font-size:.87rem!important;line-height:1.65!important}
+.project-story a,.project-story button{padding:0 0 8px!important;border:0!important;border-bottom:1px solid #f2c54f!important;border-radius:0!important;background:transparent!important;color:#fff!important;font:700 .68rem "Manrope",sans-serif!important;letter-spacing:.07em!important;text-decoration:none!important;text-transform:uppercase!important;cursor:pointer!important;transition:color .2s ease!important}
+.project-story a:hover,.project-story button:hover{color:#f2c54f!important}
+
+.contact-assurance{display:grid!important;grid-template-columns:repeat(3,1fr)!important;background:#0b100f!important;color:#fff!important}
+.contact-assurance article{min-height:150px!important;padding:34px clamp(24px,4vw,70px)!important;display:flex!important;gap:24px!important;align-items:center!important;border-right:1px solid rgba(255,255,255,.14)!important}
+.contact-assurance article:last-child{border-right:0!important}
+.contact-assurance span{color:#f2c54f!important;font-size:.61rem!important;font-weight:800!important}
+.contact-assurance div{display:flex!important;flex-direction:column!important;gap:6px!important}
+.contact-assurance strong{font-size:.9rem!important}
+.contact-assurance small{color:rgba(255,255,255,.54)!important;font-size:.7rem!important}
+.contact-rebuild{gap:clamp(50px,8vw,120px)!important}
+.cinema-form label{color:rgba(255,255,255,.82)!important;font-size:.68rem!important;letter-spacing:.025em!important}
+.cinema-form input,.cinema-form select,.cinema-form textarea{border-radius:2px!important}
+.form-note{color:rgba(255,255,255,.48)!important}
+
+.studio-opening h1{font-size:clamp(4.6rem,7.4vw,8.3rem)!important;line-height:.88!important}
+.studio-opening-copy{padding-right:clamp(20px,4vw,78px)!important}
+.studio-process>h2{max-width:1050px!important;font-size:clamp(3.7rem,6.3vw,7rem)!important}
+.studio-cta h2{font-size:clamp(4rem,7vw,7.7rem)!important;line-height:.9!important}
+.studio-stills-compact button:after{content:"Ver foto"!important;position:absolute!important;inset:auto 10px 10px auto!important;padding:7px 9px!important;background:rgba(8,10,9,.78)!important;color:#fff!important;font-size:.55rem!important;font-weight:800!important;letter-spacing:.06em!important;text-transform:uppercase!important;opacity:0!important;transform:translateY(5px)!important;transition:.25s ease!important}
+.studio-stills-compact button:hover:after,.studio-stills-compact button:focus-visible:after{opacity:1!important;transform:none!important}
+
+.cinematic-reveal{opacity:0!important;transform:translateY(28px)!important;transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)!important}
+.cinematic-reveal.is-in{opacity:1!important;transform:none!important}
+.inner-hero>img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)!important}
+.is-ready .inner-hero>img{transform:scale(1.015)!important}
+@media(max-width:900px){.project-story{grid-template-columns:1fr!important;gap:45px!important}.project-story-reverse figure{order:0!important}.contact-assurance{grid-template-columns:1fr!important}.contact-assurance article{min-height:110px!important;border-right:0!important;border-bottom:1px solid rgba(255,255,255,.14)!important}.contact-assurance article:last-child{border-bottom:0!important}}
+@media(max-width:700px){.cinema-inner .inner-hero{min-height:650px!important}.cinema-inner .inner-hero>div{width:calc(100% - 40px)!important;padding:150px 0 54px!important}.cinema-inner .inner-hero h1{font-size:clamp(3.15rem,14.5vw,4.4rem)!important;line-height:.92!important}.portfolio-clean-hero:after,.services-clean-hero:after,.contact-hero:after{background:linear-gradient(0deg,rgba(4,10,9,.92),rgba(4,10,9,.2) 76%)!important}.project-stories .cinema-heading{margin-bottom:70px!important}.project-story{padding-bottom:85px!important}.project-story+.project-story{padding-top:85px!important}.project-story h3{font-size:clamp(2.5rem,11vw,3.6rem)!important}.project-story dl>div{grid-template-columns:1fr!important;gap:6px!important}.studio-opening h1{font-size:clamp(3.7rem,17vw,5.3rem)!important}.studio-opening-copy{padding-right:0!important}}
+@media(prefers-reduced-motion:reduce){.cinematic-reveal{opacity:1!important;transform:none!important;transition:none!important}.inner-hero>img{transition:none!important}}

@@ -1418,6 +1418,41 @@
       });
     }
 
+    var cinematicTargets = document.querySelectorAll([
+      ".cinema-inner .cinema-heading",
+      ".cinema-inner .video-card",
+      ".cinema-inner .inner-services > article",
+      ".cinema-inner .story-section > div",
+      ".cinema-inner .values-strip > article",
+      ".cinema-inner .project-story",
+      ".cinema-inner .contact-assurance > article",
+      ".cinema-inner .contact-rebuild > *",
+      ".cinema-inner .place-collection"
+    ].join(","));
+
+    cinematicTargets.forEach(function (target) {
+      target.classList.add("cinematic-reveal");
+    });
+
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      var cinematicObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            cinematicObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+
+      cinematicTargets.forEach(function (target) {
+        cinematicObserver.observe(target);
+      });
+    } else {
+      cinematicTargets.forEach(function (target) {
+        target.classList.add("is-in");
+      });
+    }
+
     if (document.body.classList.contains("studio-home")) {
       var revealTargets = document.querySelectorAll([
         ".studio-section-head",
