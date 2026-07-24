@@ -234,3 +234,17 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 .review-disclaimer{max-width:780px;margin:22px 0 0;color:rgba(255,255,255,.35);font-size:.56rem;line-height:1.6}
 @media(max-width:900px){.studio-reviews-heading{grid-template-columns:1fr;margin:55px 0}.studio-review-grid{grid-template-columns:1fr}.studio-review-grid article{min-height:360px}.studio-review-grid blockquote{margin:50px 0}}
 @media(max-width:600px){.studio-reviews{padding:90px 20px}.studio-reviews-heading h2{font-size:clamp(3.4rem,15vw,4.7rem)!important}.review-top{grid-template-columns:48px 1fr}.review-stars{grid-column:2}.review-avatar{width:44px;height:44px}.studio-review-grid article{min-height:330px;padding:26px 22px}.studio-review-grid blockquote,.studio-review-grid article:not(.studio-review-featured) blockquote{margin:42px 0;font-size:1.35rem}}
+
+/* Compact review presentation */
+.studio-reviews{padding:105px max(5vw,calc((100vw - 1320px)/2))!important}
+.studio-reviews-heading{grid-template-columns:220px 1fr!important;margin:52px 0 58px!important}
+.studio-reviews-heading h2{max-width:760px!important;font-size:clamp(3rem,4.6vw,5.3rem)!important}
+.studio-review-grid{grid-template-columns:1fr 1fr!important;border-radius:4px!important;overflow:hidden!important}
+.studio-review-grid article{min-height:330px!important;padding:34px 36px!important}
+.review-top{grid-template-columns:44px 1fr auto!important;gap:12px!important}.review-avatar{width:42px!important;height:42px!important}
+.review-top strong{font-size:.75rem!important}.review-top small{font-size:.57rem!important}.review-stars{font-size:.72rem!important}
+.studio-review-grid blockquote,.studio-review-grid article:not(.studio-review-featured) blockquote{max-width:720px!important;margin:42px 0 36px!important;font-size:clamp(1rem,1.25vw,1.22rem)!important;font-weight:450!important;line-height:1.55!important}
+.studio-review-grid article>a{font-size:.56rem!important}
+.review-disclaimer{margin-top:16px!important}
+@media(max-width:900px){.studio-reviews-heading{grid-template-columns:1fr!important}.studio-review-grid{grid-template-columns:1fr!important}.studio-review-grid article{min-height:285px!important}}
+@media(max-width:600px){.studio-reviews{padding:78px 20px!important}.studio-reviews-heading h2{font-size:clamp(3rem,13vw,4rem)!important}.studio-review-grid article{min-height:280px!important;padding:26px 22px!important}.review-top{grid-template-columns:40px 1fr!important}.review-avatar{width:38px!important;height:38px!important}.review-stars{grid-column:2!important}.studio-review-grid blockquote,.studio-review-grid article:not(.studio-review-featured) blockquote{margin:34px 0 30px!important;font-size:1rem!important}}
