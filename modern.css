@@ -188,12 +188,13 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 
 /* Cinematic autoplay film in the homepage opening */
 .studio-opening-video>img{position:absolute!important;inset:0!important;z-index:0!important}
-.studio-opening-video>iframe{position:absolute!important;z-index:1!important;left:50%!important;top:50%!important;width:max(100%,177.78vh)!important;height:max(100%,56.25vw)!important;border:0!important;pointer-events:none!important;transform:translate(-50%,-50%) scale(1.02)!important}
+.studio-opening-video{container-type:size!important}
+.studio-opening-video>iframe{position:absolute!important;z-index:1!important;left:50%!important;top:50%!important;width:max(100cqw,177.78cqh)!important;height:max(100cqh,56.25cqw)!important;border:0!important;pointer-events:none!important;transform:translate(-50%,-50%)!important}
 .studio-opening-video:after{z-index:2!important;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent 56%),linear-gradient(90deg,rgba(0,0,0,.12),transparent 45%)!important}
 .studio-opening-video figcaption{z-index:3!important;right:28px!important;flex-direction:row!important;align-items:center!important;gap:14px!important}
 .studio-opening-video figcaption>span{order:0!important;padding-right:14px!important;border-right:1px solid rgba(255,255,255,.38)!important;font-size:.57rem!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important}
 .studio-opening-video figcaption>b{order:1!important}
 .studio-opening-video figcaption>button{order:2!important;margin-left:auto!important;padding:8px 0!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.7)!important;background:transparent!important;color:#fff!important;font:700 .58rem "Manrope",sans-serif!important;letter-spacing:.06em!important;text-transform:uppercase!important;cursor:pointer!important}
 .studio-opening-video figcaption>button:hover{border-color:#f2c54f!important;color:#f2c54f!important}
-@media(max-width:700px){.studio-opening-video>iframe{width:177.78vh!important;height:100%!important}.studio-opening-video figcaption{right:18px!important;left:18px!important;bottom:18px!important;display:grid!important;grid-template-columns:1fr auto!important;gap:5px 14px!important}.studio-opening-video figcaption>span{grid-column:1/-1!important;padding:0!important;border:0!important}.studio-opening-video figcaption>button{grid-column:2!important;grid-row:2!important}}
+@media(max-width:700px){.studio-opening-video figcaption{right:18px!important;left:18px!important;bottom:18px!important;display:grid!important;grid-template-columns:1fr auto!important;gap:5px 14px!important}.studio-opening-video figcaption>span{grid-column:1/-1!important;padding:0!important;border:0!important}.studio-opening-video figcaption>button{grid-column:2!important;grid-row:2!important}}
 @media(prefers-reduced-motion:reduce){.studio-opening-video>iframe{display:none!important}}
