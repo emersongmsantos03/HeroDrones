@@ -214,3 +214,23 @@ body.cinema-home,.cinema-home button,.cinema-home input,.cinema-home select,.cin
 .portfolio-lightbox-caption h2{margin:4px 0 0!important;color:#fff!important;font-size:clamp(1rem,1.5vw,1.3rem)!important;font-weight:550!important;letter-spacing:-.035em!important}
 .portfolio-lightbox-caption>strong{padding-top:7px!important;color:rgba(255,255,255,.48)!important;font-size:.68rem!important}
 @media(max-width:700px){.portfolio-lightbox{padding:0!important}.portfolio-lightbox-dialog{width:100%!important;height:100svh!important;grid-template-rows:minmax(0,1fr) 86px!important;border-radius:0!important}.portfolio-lightbox-stage img{max-width:100%!important;max-height:100%!important}.portfolio-lightbox-caption{padding:14px 18px max(14px,env(safe-area-inset-bottom))!important}.portfolio-lightbox-nav{top:auto!important;bottom:104px!important}.portfolio-lightbox-close{top:14px!important;right:14px!important}}
+
+/* Google review stories */
+.studio-reviews{padding:140px 3vw;background:#0b0d0c;color:#fff}
+.studio-reviews .studio-section-head{border-color:rgba(255,255,255,.2)}
+.studio-reviews .studio-section-head a{color:rgba(255,255,255,.65);font-size:.64rem;font-weight:800;text-decoration:none;text-transform:uppercase}
+.studio-reviews-heading{display:grid;grid-template-columns:.34fr 1fr;gap:50px;align-items:end;margin:70px 0 85px}
+.studio-reviews-heading>div{display:flex;align-items:center;gap:12px;padding-bottom:10px}.studio-reviews-heading p{margin:0;color:rgba(255,255,255,.58);font-size:.69rem;font-weight:700;text-transform:uppercase}.google-mark{display:grid;width:30px;height:30px;place-items:center;border-radius:50%;background:#fff;color:#4285f4;font-size:.9rem;font-weight:900}
+.studio-reviews-heading h2{max-width:1000px;font-size:clamp(3.5rem,6.4vw,7.2rem)!important;line-height:.9!important}.studio-reviews-heading h2 span{color:#f2c54f!important}
+.studio-review-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
+.studio-review-grid article{min-height:430px;padding:clamp(28px,4vw,58px);display:flex;flex-direction:column;background:#111513}
+.review-top{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center}
+.review-top>div{display:flex;flex-direction:column}.review-top strong{font-size:.82rem}.review-top small{color:rgba(255,255,255,.48);font-size:.62rem}
+.review-avatar{position:relative;width:50px;height:50px;display:block;border-radius:50%;overflow:hidden;background:#252a27}.review-avatar img{position:absolute;top:0;width:200%;height:100%;max-width:none!important;object-fit:cover}.review-avatar-dlara img{left:0}.review-avatar-marcos img{left:-100%}
+.review-stars{color:#f2c54f;font-size:.85rem;letter-spacing:.08em}
+.studio-review-grid blockquote{max-width:980px;margin:70px 0 55px;color:rgba(255,255,255,.88);font-size:clamp(1.35rem,2vw,2.2rem);font-weight:480;letter-spacing:-.035em;line-height:1.42}
+.studio-review-grid article:not(.studio-review-featured) blockquote{font-size:clamp(1.7rem,2.4vw,2.8rem);line-height:1.25}
+.studio-review-grid article>a{align-self:flex-start;margin-top:auto;padding-bottom:7px;border-bottom:1px solid #f2c54f;color:#fff;font-size:.61rem;font-weight:800;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
+.review-disclaimer{max-width:780px;margin:22px 0 0;color:rgba(255,255,255,.35);font-size:.56rem;line-height:1.6}
+@media(max-width:900px){.studio-reviews-heading{grid-template-columns:1fr;margin:55px 0}.studio-review-grid{grid-template-columns:1fr}.studio-review-grid article{min-height:360px}.studio-review-grid blockquote{margin:50px 0}}
+@media(max-width:600px){.studio-reviews{padding:90px 20px}.studio-reviews-heading h2{font-size:clamp(3.4rem,15vw,4.7rem)!important}.review-top{grid-template-columns:48px 1fr}.review-stars{grid-column:2}.review-avatar{width:44px;height:44px}.studio-review-grid article{min-height:330px;padding:26px 22px}.studio-review-grid blockquote,.studio-review-grid article:not(.studio-review-featured) blockquote{margin:42px 0;font-size:1.35rem}}
