@@ -1417,6 +1417,45 @@
         window.open("https://wa.me/5541984537827?text=" + encodeURIComponent(message), "_blank", "noopener");
       });
     }
+
+    if (document.body.classList.contains("studio-home")) {
+      var revealTargets = document.querySelectorAll([
+        ".studio-section-head",
+        ".studio-video-grid article",
+        ".studio-manifesto > *",
+        ".studio-expertise-intro > *",
+        ".studio-expertise-list a",
+        ".studio-stills-compact button",
+        ".studio-process > h2",
+        ".studio-process li",
+        ".studio-cta > div"
+      ].join(","));
+
+      revealTargets.forEach(function (target, index) {
+        target.classList.add("studio-reveal");
+        if (index % 2) target.classList.add("studio-reveal-delay");
+      });
+
+      if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var studioObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-in");
+              studioObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -7% 0px" });
+        revealTargets.forEach(function (target) { studioObserver.observe(target); });
+      } else {
+        revealTargets.forEach(function (target) { target.classList.add("is-in"); });
+      }
+
+      function updateStudioHeader() {
+        document.body.classList.toggle("studio-scrolled", window.scrollY > 72);
+      }
+      updateStudioHeader();
+      window.addEventListener("scroll", updateStudioHeader, { passive: true });
+    }
   }
 
   if (document.readyState === "loading") {
