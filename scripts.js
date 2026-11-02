@@ -1393,6 +1393,35 @@
       });
     }
 
+    var signupForm = document.querySelector("[data-cadastro-form]");
+    if (signupForm) {
+      signupForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var status = signupForm.querySelector("[data-cadastro-status]");
+        if (!signupForm.checkValidity()) {
+          signupForm.reportValidity();
+          return;
+        }
+        var button = signupForm.querySelector("button");
+        var data = new FormData(signupForm);
+        var body = Object.fromEntries(data.entries());
+        body.autorizacao = data.get("autorizacao") === "on";
+        body.origem = new URLSearchParams(window.location.search).get("origem") || "";
+        button.disabled = true;
+        status.textContent = "Enviando...";
+        fetch("https://flyflow.herodronecwb.workers.dev/t/cadastro", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+          .then(function (response) {
+            if (!response.ok) throw new Error("falha");
+            signupForm.reset();
+            status.textContent = "Cadastro recebido! Em breve o Emerson chama você no WhatsApp.";
+          })
+          .catch(function () {
+            status.textContent = "Não foi possível enviar. Tente de novo ou chame no WhatsApp (41) 98453-7827.";
+          })
+          .finally(function () { button.disabled = false; });
+      });
+    }
+
     var quoteForm = document.querySelector("[data-cinema-form]");
     if (quoteForm) {
       quoteForm.addEventListener("submit", function (event) {
