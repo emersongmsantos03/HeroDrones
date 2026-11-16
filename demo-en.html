@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Brightway Cleaning Co. · Demo</title>
-<meta name="description" content="Portfolio demo: website form to CRM to WhatsApp AI assistant. Brightway Cleaning Co. is a fictional company.">
+<title>Hero Drone · Aerial photos and videos</title>
+<meta name="description" content="Hero Drone: drone photos and videos for vacation rentals, real estate and businesses in Curitiba, Brazil. Get your proposal on WhatsApp.">
 <style>
-:root{--bg:#f6f8f7;--card:#fff;--ink:#16211d;--muted:#5b6b64;--line:#dbe3df;--brand:#1d7a5a;--brand-ink:#fff;--soft:#e4f1eb;--warn:#8a5a00;--warn-bg:#fdf3df}
+:root{--bg:#f6f8f7;--card:#fff;--ink:#16211d;--muted:#5b6b64;--line:#dbe3df;--brand:#0f6fb5;--brand-ink:#fff;--soft:#e3eef8;--warn:#8a5a00;--warn-bg:#fdf3df}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .bar{background:var(--warn-bg);color:var(--warn);text-align:center;font-size:14px;padding:8px 16px}
 header,main,footer{max-width:1040px;margin:0 auto;padding:0 20px}
-header{display:flex;align-items:center;gap:10px;padding-top:22px;padding-bottom:22px}
-.logo{width:34px;height:34px;border-radius:9px;background:var(--brand);display:grid;place-items:center;color:var(--brand-ink);font-weight:700}
-header strong{font-size:18px}
+header{display:flex;align-items:center;gap:12px;padding-top:22px;padding-bottom:22px}
+header strong{font-size:18px;letter-spacing:.06em}
+a{color:var(--brand)}
 .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start;padding-block:24px 56px}
 h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 16px;text-wrap:balance}
 .lede{color:var(--muted);font-size:18px;max-width:46ch;margin:0 0 24px}
@@ -43,51 +43,52 @@ footer{color:var(--muted);font-size:14px;padding-bottom:32px}
 </style>
 </head>
 <body>
-<div class="bar">Portfolio demo · Brightway Cleaning Co. is a fictional company</div>
-<header><span class="logo">B</span><strong>Brightway Cleaning Co.</strong></header>
+<header><img src="assets/hero-drone-logo.png" width="40" height="40" alt=""><strong>HERO DRONE</strong></header>
 <main>
   <section class="grid">
     <div>
-      <h1>A spotless home, without the back-and-forth.</h1>
-      <p class="lede">Tell us about your place and get your quote on WhatsApp in minutes. Home, deep and move-out cleaning in Austin and nearby cities.</p>
+      <h1>See your property from above.</h1>
+      <p class="lede">Drone photos and videos for vacation rentals, real estate and businesses in Curitiba, Brazil. Tell us about your place and get your proposal on WhatsApp in minutes.</p>
       <ul class="perks">
         <li>Reply on WhatsApp in under a minute, any time of day</li>
-        <li>All supplies included, eco-friendly products on request</li>
-        <li>Pets welcome</li>
+        <li>Editing, color, music and vertical Reels included</li>
+        <li>Delivery in 3 business days · <a href="portfolio.html">see the portfolio</a></li>
       </ul>
     </div>
     <form id="lead-form" novalidate>
-      <h2>Get a free quote</h2>
+      <h2>Get your proposal</h2>
       <label for="f-name">Full name<input id="f-name" name="nome" autocomplete="name" required></label>
       <div class="row">
         <label for="f-phone">WhatsApp number<input id="f-phone" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="With country code" required></label>
         <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
       </div>
       <div class="row">
-        <label for="f-city">City or ZIP code<input id="f-city" name="cidade" autocomplete="address-level2" required></label>
+        <label for="f-city">City and neighborhood<input id="f-city" name="cidade" autocomplete="address-level2" required></label>
         <label for="f-service">Service<select id="f-service" name="tipo" required>
           <option value="">Choose one</option>
-          <option>Standard home cleaning</option>
-          <option>Deep cleaning</option>
-          <option>Move-in / move-out cleaning</option>
-          <option>Recurring cleaning</option>
-          <option>Office cleaning</option>
+          <option>Vacation rental or Airbnb</option>
+          <option>Real estate listing</option>
+          <option>Business or storefront</option>
+          <option>Construction progress</option>
+          <option>Roof, facade or solar panels</option>
+          <option>Music video or commercial</option>
+          <option>Something else</option>
         </select></label>
       </div>
-      <label for="f-notes">Tell us about your home<textarea id="f-notes" name="objetivo" rows="3" placeholder="Bedrooms, bathrooms, pets, anything special"></textarea></label>
+      <label for="f-notes">What do you want to show?<textarea id="f-notes" name="objetivo" rows="3" placeholder="The view, the lot, the facade... and where you will use it"></textarea></label>
       <label class="hp" aria-hidden="true">Website<input name="site" tabindex="-1" autocomplete="off"></label>
-      <label class="consent" for="f-consent"><input id="f-consent" name="autorizacao" type="checkbox" required><span>I agree to be contacted on WhatsApp about my quote. I can opt out at any time.</span></label>
-      <button type="submit">Get my quote on WhatsApp</button>
+      <label class="consent" for="f-consent"><input id="f-consent" name="autorizacao" type="checkbox" required><span>I agree to be contacted on WhatsApp about my proposal. I can opt out at any time.</span></label>
+      <button type="submit">Get my proposal on WhatsApp</button>
       <p class="status" id="f-status" role="status"></p>
     </form>
   </section>
   <section class="steps">
     <div class="step"><b>1. You fill the form</b><p>Your request goes straight into our CRM.</p></div>
-    <div class="step"><b>2. Ava texts you</b><p>Our AI assistant starts the chat on WhatsApp and asks what's missing.</p></div>
-    <div class="step"><b>3. We send the quote</b><p>A team member follows up with the price and the schedule.</p></div>
+    <div class="step"><b>2. Ava texts you</b><p>Our AI assistant starts the chat on WhatsApp, answers your questions and asks what's missing.</p></div>
+    <div class="step"><b>3. Emerson sends the proposal</b><p>The pilot follows up with the price and an available date.</p></div>
   </section>
 </main>
-<footer>© 2026 Brightway Cleaning Co. (demo). Built by Emerson Moraes: website, CRM and WhatsApp AI automation.</footer>
+<footer>© 2026 Hero Drone · Curitiba and metropolitan region · <a href="privacidade.html">Privacy</a> · Instagram @hero.dronecwb</footer>
 <script>
 (function () {
   var form = document.getElementById("lead-form");
