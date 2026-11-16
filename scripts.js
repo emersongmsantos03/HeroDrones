@@ -1,4 +1,16 @@
 (function () {
+  /* Idioma da página: as páginas em /en/ usam lang="en" e data-base="../" para achar os arquivos da raiz. */
+  var SITE_EN = (document.documentElement.getAttribute("lang") || "").indexOf("en") === 0;
+  var SITE_BASE = document.documentElement.getAttribute("data-base") || "";
+  var EN_TEXT = {
+    "Propriedades": "Properties", "Arquitetura": "Architecture", "Detalhes visuais": "Visual details",
+    "Geometria do terreno": "Geometry of the land", "Edificação e paisagem urbana": "Building and urban landscape",
+    "Cobertura e contexto": "Roof and context", "Território e limites naturais": "Land and natural boundaries",
+    "Texturas da fachada": "Facade textures", "Linhas e volumes": "Lines and volumes", "Platibanda vista do alto": "Parapet seen from above",
+    "Encontros arquitetônicos": "Architectural junctions", "Fachada em perspectiva": "Facade in perspective", "Leitura frontal": "Front view"
+  };
+  function tr(text) { return SITE_EN && EN_TEXT[text] ? EN_TEXT[text] : text; }
+
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var lastFocusedElement = null;
 
@@ -454,8 +466,8 @@
     var items = [];
 
     portfolioItems.forEach(function (portfolioItem) {
-      var source = "portifolio/" + portfolioItem.file;
-      var thumbnail = "assets/portfolio/thumbs/" + portfolioItem.file;
+      var source = SITE_BASE + "portifolio/" + portfolioItem.file;
+      var thumbnail = SITE_BASE + "assets/portfolio/thumbs/" + portfolioItem.file;
       var button = document.createElement("button");
       var media = document.createElement("span");
       var image = document.createElement("img");
@@ -470,21 +482,21 @@
       button.setAttribute("data-gallery-trigger", "");
       button.setAttribute("data-gallery-group", "portfolio-completo");
       button.setAttribute("data-full", source);
-      button.setAttribute("data-title", portfolioItem.title);
-      button.setAttribute("data-meta", portfolioItem.label + " · Alta resolução");
-      button.setAttribute("aria-label", "Abrir " + portfolioItem.title + " em resolução original");
+      button.setAttribute("data-title", tr(portfolioItem.title));
+      button.setAttribute("data-meta", tr(portfolioItem.label) + (SITE_EN ? " · High resolution" : " · Alta resolução"));
+      button.setAttribute("aria-label", SITE_EN ? "Open " + tr(portfolioItem.title) + " in original resolution" : "Abrir " + portfolioItem.title + " em resolução original");
 
       media.className = "portfolio-complete-media";
       image.src = thumbnail;
-      image.alt = portfolioItem.title;
+      image.alt = tr(portfolioItem.title);
       image.width = 800;
       image.height = 450;
       image.loading = "lazy";
       image.decoding = "async";
 
       body.className = "portfolio-complete-body";
-      category.textContent = portfolioItem.label;
-      title.textContent = portfolioItem.title;
+      category.textContent = tr(portfolioItem.label);
+      title.textContent = tr(portfolioItem.title);
 
       media.appendChild(image);
       body.appendChild(category);
@@ -964,7 +976,7 @@
       image.onerror = function () {
         lightbox.classList.remove("is-loading");
         if (meta) {
-          meta.textContent = "Não foi possível carregar o arquivo original.";
+          meta.textContent = SITE_EN ? "Could not load the original file." : "Não foi possível carregar o arquivo original.";
         }
       };
 
@@ -1355,7 +1367,7 @@
         var card = button.closest("[data-video-id]");
         var title = card.querySelector("h3");
         dialog.classList.toggle("is-vertical", card.classList.contains("video-card-vertical"));
-        dialog.querySelector(".player-label").textContent = "Hero Drone — " + (title ? title.textContent : "Filme");
+        dialog.querySelector(".player-label").textContent = "Hero Drone — " + (title ? title.textContent : (SITE_EN ? "Film" : "Filme"));
         dialog.querySelector("[data-player]").replaceChildren(frame);
         dialog.showModal();
       });
@@ -1424,6 +1436,7 @@
 
     var quoteForm = document.querySelector("[data-cinema-form]");
     if (quoteForm) {
+      /* O briefing vai para o FlyFlow (CRM). Em inglês, a Ava chama no WhatsApp; em português, o WhatsApp também abre com a mensagem pronta. */
       quoteForm.addEventListener("submit", function (event) {
         event.preventDefault();
         if (!quoteForm.checkValidity()) {
@@ -1431,19 +1444,45 @@
           return;
         }
         var data = new FormData(quoteForm);
-        var message = [
-          "Olá! Conheci o trabalho da Hero Drone pelo site e gostaria de solicitar um orçamento.",
-          "",
-          "Nome: " + data.get("nome"),
-          "WhatsApp: " + data.get("whatsapp"),
-          "E-mail: " + (data.get("email") || "Não informado"),
-          "Cidade: " + data.get("cidade"),
-          "Tipo de projeto: " + data.get("tipo"),
-          "Serviço desejado: " + data.get("servico"),
-          "Objetivo: " + data.get("objetivo"),
-          "Mensagem adicional: " + (data.get("mensagem") || "Não informada")
-        ].join("\n");
-        window.open("https://wa.me/5541984537827?text=" + encodeURIComponent(message), "_blank", "noopener");
+        var note = quoteForm.querySelector(".form-note");
+        var button = quoteForm.querySelector("button[type=submit]");
+        var join = function (a, b, sep) { return [a, b].filter(function (v) { return v && String(v).trim(); }).join(sep); };
+        var lead = {
+          nome: data.get("nome"), whatsapp: data.get("whatsapp"), email: data.get("email") || "", cidade: data.get("cidade"),
+          tipo: join(data.get("tipo"), data.get("servico"), " · "),
+          objetivo: join(data.get("objetivo"), data.get("mensagem"), " | "),
+          autorizacao: data.get("autorizacao") === "on", site: data.get("site") || "",
+          origem: SITE_EN ? "site-en" : (new URLSearchParams(window.location.search).get("origem") || "contato")
+        };
+        if (!SITE_EN) {
+          var message = [
+            "Olá! Conheci o trabalho da Hero Drone pelo site e gostaria de solicitar um orçamento.",
+            "",
+            "Nome: " + data.get("nome"),
+            "WhatsApp: " + data.get("whatsapp"),
+            "E-mail: " + (data.get("email") || "Não informado"),
+            "Cidade: " + data.get("cidade"),
+            "Tipo de projeto: " + data.get("tipo"),
+            "Serviço desejado: " + data.get("servico"),
+            "Objetivo: " + data.get("objetivo"),
+            "Mensagem adicional: " + (data.get("mensagem") || "Não informada")
+          ].join("\n");
+          window.open("https://wa.me/5541984537827?text=" + encodeURIComponent(message), "_blank", "noopener");
+        }
+        if (button) button.disabled = true;
+        if (note && SITE_EN) note.textContent = "Sending...";
+        fetch("https://flyflow.herodronecwb.workers.dev/t/cadastro", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) })
+          .then(function (response) {
+            if (!response.ok) throw new Error("falha");
+            if (SITE_EN) {
+              quoteForm.reset();
+              if (note) note.textContent = "Got it! Ava, our virtual assistant, will text you on WhatsApp in about a minute.";
+            }
+          })
+          .catch(function () {
+            if (note && SITE_EN) note.textContent = "We couldn't send that. Check your WhatsApp number (with country code) and try again, or text +55 41 98453-7827.";
+          })
+          .finally(function () { if (button) button.disabled = false; });
       });
     }
 
