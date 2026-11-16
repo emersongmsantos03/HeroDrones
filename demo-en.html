@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hero Drone · Aerial photos and videos</title>
+<meta name="description" content="Hero Drone: drone photos and videos for vacation rentals, real estate and businesses in Curitiba, Brazil. Get your proposal on WhatsApp.">
+<style>
+:root{--bg:#f6f8f7;--card:#fff;--ink:#16211d;--muted:#5b6b64;--line:#dbe3df;--brand:#0f6fb5;--brand-ink:#fff;--soft:#e3eef8;--warn:#8a5a00;--warn-bg:#fdf3df}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.bar{background:var(--warn-bg);color:var(--warn);text-align:center;font-size:14px;padding:8px 16px}
+header,main,footer{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;gap:12px;padding-top:22px;padding-bottom:22px}
+header strong{font-size:18px;letter-spacing:.06em}
+a{color:var(--brand)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start;padding-block:24px 56px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 16px;text-wrap:balance}
+.lede{color:var(--muted);font-size:18px;max-width:46ch;margin:0 0 24px}
+ul.perks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ul.perks li{display:flex;gap:10px}
+ul.perks li::before{content:"✓";color:var(--brand);font-weight:700}
+form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:14px;box-shadow:0 10px 30px rgba(22,33,29,.06)}
+form h2{margin:0;font-size:20px}
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{font:inherit;font-weight:400;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:transparent}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--muted)}
+.consent input{width:auto;margin-top:4px}
+.hp{position:absolute;left:-9999px}
+button{font:inherit;font-weight:600;background:var(--brand);color:var(--brand-ink);border:0;border-radius:8px;padding:13px;cursor:pointer}
+button:disabled{opacity:.6}
+.status{min-height:1.4em;margin:0;font-size:14px;color:var(--brand)}
+.status.err{color:#b42318}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:56px}
+.step{background:var(--soft);border-radius:12px;padding:18px}
+.step b{display:block;margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+footer{color:var(--muted);font-size:14px;padding-bottom:32px}
+@media (max-width:800px){.grid,.steps{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><img src="assets/hero-drone-logo.png" width="40" height="40" alt=""><strong>HERO DRONE</strong></header>
+<main>
+  <section class="grid">
+    <div>
+      <h1>See your property from above.</h1>
+      <p class="lede">Drone photos and videos for vacation rentals, real estate and businesses in Curitiba, Brazil. Tell us about your place and get your proposal on WhatsApp in minutes.</p>
+      <ul class="perks">
+        <li>Reply on WhatsApp in under a minute, any time of day</li>
+        <li>Editing, color, music and vertical Reels included</li>
+        <li>Delivery in 3 business days · <a href="portfolio.html">see the portfolio</a></li>
+      </ul>
+    </div>
+    <form id="lead-form" novalidate>
+      <h2>Get your proposal</h2>
+      <label for="f-name">Full name<input id="f-name" name="nome" autocomplete="name" required></label>
+      <div class="row">
+        <label for="f-phone">WhatsApp number<input id="f-phone" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="With country code" required></label>
+        <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
+      </div>
+      <div class="row">
+        <label for="f-city">City and neighborhood<input id="f-city" name="cidade" autocomplete="address-level2" required></label>
+        <label for="f-service">Service<select id="f-service" name="tipo" required>
+          <option value="">Choose one</option>
+          <option>Vacation rental or Airbnb</option>
+          <option>Real estate listing</option>
+          <option>Business or storefront</option>
+          <option>Construction progress</option>
+          <option>Roof, facade or solar panels</option>
+          <option>Music video or commercial</option>
+          <option>Something else</option>
+        </select></label>
+      </div>
+      <label for="f-notes">What do you want to show?<textarea id="f-notes" name="objetivo" rows="3" placeholder="The view, the lot, the facade... and where you will use it"></textarea></label>
+      <label class="hp" aria-hidden="true">Website<input name="site" tabindex="-1" autocomplete="off"></label>
+      <label class="consent" for="f-consent"><input id="f-consent" name="autorizacao" type="checkbox" required><span>I agree to be contacted on WhatsApp about my proposal. I can opt out at any time.</span></label>
+      <button type="submit">Get my proposal on WhatsApp</button>
+      <p class="status" id="f-status" role="status"></p>
+    </form>
+  </section>
+  <section class="steps">
+    <div class="step"><b>1. You fill the form</b><p>Your request goes straight into our CRM.</p></div>
+    <div class="step"><b>2. Ava texts you</b><p>Our AI assistant starts the chat on WhatsApp, answers your questions and asks what's missing.</p></div>
+    <div class="step"><b>3. Emerson sends the proposal</b><p>The pilot follows up with the price and an available date.</p></div>
+  </section>
+</main>
+<footer>© 2026 Hero Drone · Curitiba and metropolitan region · <a href="privacidade.html">Privacy</a> · Instagram @hero.dronecwb</footer>
+<script>
+(function () {
+  var form = document.getElementById("lead-form");
+  var status = document.getElementById("f-status");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    var data = new FormData(form);
+    var body = Object.fromEntries(data.entries());
+    body.autorizacao = data.get("autorizacao") === "on";
+    body.origem = "demo-en";
+    var button = form.querySelector("button");
+    button.disabled = true;
+    status.className = "status";
+    status.textContent = "Sending...";
+    fetch("https://flyflow.herodronecwb.workers.dev/t/cadastro", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw new Error(); form.reset(); status.textContent = "Got it! Ava will text you on WhatsApp in about a minute."; })
+      .catch(function () { status.className = "status err"; status.textContent = "We couldn't send that. Check your number (with country code) and try again."; })
+      .finally(function () { button.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
