@@ -1,15 +1,16 @@
+/* Idioma da página: as páginas em /en/ usam lang="en" e data-base="../" para achar os arquivos da raiz. */
+var SITE_EN = (document.documentElement.getAttribute("lang") || "").indexOf("en") === 0;
+var SITE_BASE = document.documentElement.getAttribute("data-base") || "";
+var EN_TEXT = {
+  "Propriedades": "Properties", "Arquitetura": "Architecture", "Detalhes visuais": "Visual details",
+  "Geometria do terreno": "Geometry of the land", "Edificação e paisagem urbana": "Building and urban landscape",
+  "Cobertura e contexto": "Roof and context", "Território e limites naturais": "Land and natural boundaries",
+  "Texturas da fachada": "Facade textures", "Linhas e volumes": "Lines and volumes", "Platibanda vista do alto": "Parapet seen from above",
+  "Encontros arquitetônicos": "Architectural junctions", "Fachada em perspectiva": "Facade in perspective", "Leitura frontal": "Front view"
+};
+function tr(text) { return SITE_EN && EN_TEXT[text] ? EN_TEXT[text] : text; }
+
 (function () {
-  /* Idioma da página: as páginas em /en/ usam lang="en" e data-base="../" para achar os arquivos da raiz. */
-  var SITE_EN = (document.documentElement.getAttribute("lang") || "").indexOf("en") === 0;
-  var SITE_BASE = document.documentElement.getAttribute("data-base") || "";
-  var EN_TEXT = {
-    "Propriedades": "Properties", "Arquitetura": "Architecture", "Detalhes visuais": "Visual details",
-    "Geometria do terreno": "Geometry of the land", "Edificação e paisagem urbana": "Building and urban landscape",
-    "Cobertura e contexto": "Roof and context", "Território e limites naturais": "Land and natural boundaries",
-    "Texturas da fachada": "Facade textures", "Linhas e volumes": "Lines and volumes", "Platibanda vista do alto": "Parapet seen from above",
-    "Encontros arquitetônicos": "Architectural junctions", "Fachada em perspectiva": "Facade in perspective", "Leitura frontal": "Front view"
-  };
-  function tr(text) { return SITE_EN && EN_TEXT[text] ? EN_TEXT[text] : text; }
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var lastFocusedElement = null;
